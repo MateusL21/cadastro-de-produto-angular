@@ -1,0 +1,76 @@
+<div *ngIf="product" class=" container mt-3">
+    <div class="display-6">
+        Formulário de cadastro
+      </div>
+    
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <form #FormProduct="ngForm">
+            <div class="row mb-3 mt-3">
+              <label for="inputName" class="col-sm-2 col-form-label">Nome:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" id="inputName" required [(ngModel)]="product.name">
+              </div>
+            </div>
+    
+            <div class="row mb-3 mt-3">
+              <label for="inputEmail" class="col-sm-2 col-form-label">Email:</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" name="description"  id="inputEmail" required [(ngModel)]="product.email">
+              </div>
+              <label for="inputPhone" class="col-sm-2 col-form-label">Telefone:</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control"  name="price"  id="inputPhone" required [(ngModel)]="product.phone">
+              </div>
+    
+            </div>
+    
+            <div class="row">
+              <label for="selectCourse" class="col-sm-2 col-form-label">Cursos:</label>
+              <div class="col-sm-4">
+                <select class="form-select" aria-label="Selecione um curso" name="category"  id="selectCourse" 
+                required [(ngModel)]="product.course">
+                  <option *ngFor="let c of categories"  [ngValue]="c">
+                    {{c.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3 mt-3">
+              <label class="col-sm-2 col-form-label">Turma:</label>
+              <div class="col-sm-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="shiftRadios" id="radioManha" [(ngModel)]="product.class"  value="Manhã"
+                    checked>
+                  <label class="form-check-label" for="exampleRadios1">
+                    Manhã
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="shiftRadios" id="radioTarde" [(ngModel)]="product.class" value="Tarde">
+                  <label class="form-check-label" for="exampleRadios2">
+                    Tarde
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="shiftRadios" id="radioNoite" [(ngModel)]="product.class"  value="Noite"
+                    checked>
+                  <label class="form-check-label" for="exampleRadios1">
+                    Noite
+                  </label>
+                </div>
+              </div>
+            </div>
+
+        <div class="row mb-3 mt-3">
+          <div class="col-sm-4">
+            <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="FormProduct.invalid">Cadastrar</button>
+          </div>
+        </div>
+        </form>
+    
+      </div>
+
+</div>
+    
+    
